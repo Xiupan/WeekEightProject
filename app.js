@@ -25,6 +25,7 @@ const expressSession = require('express-session');
 const faker = require('faker');
 
 const accountRoutes = require('./routes/account');
+const snippetRoutes = require('./routes/snippet');
 
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -39,6 +40,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(accountRoutes);
+app.use(snippetRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, function(){ // Heroku ready
