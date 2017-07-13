@@ -2,18 +2,17 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/master.css">
     <title>Code Snippet App Home Page</title>
   </head>
   <body>
-    <h1>Derp!</h1>
+    <h1>All Da Code Snips</h1>
     {{#allSnips}}
-      <h2>{{title}}</h2>
+      <h2>Title: {{title}}</h2>
       <h3>{{body}}</h3>
-      <h4>{{notes}}</h4>
-      <h4>{{language}}</h4>
-      {{#tags}}
-      <h4>{{name}}</h4>
-      {{/tags}}
+      <h4>Additional Notes: {{notes}}</h4>
+      <h4>Language: {{language}}</h4>
+      <h4>Tags: {{#tags}}{{name}}{{/tags}}</h4>
     {{/allSnips}}
   </body>
 </html>
