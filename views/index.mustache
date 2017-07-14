@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/master.css">
-    <title>Code Snippet App Home Page</title>
-  </head>
-  <body>
-    <h1>All Da Code Snips</h1>
-    <div class="all-snippet-container">
-      {{#allSnips}}
-      <div class="snippet-container">
-        <h3>{{title}}</h3>
-        <p>{{body}}</p>
-        <p>Additional Notes: {{notes}}</p>
-        <p>Language: {{language}}</p>
-        <p>Tags: {{#tags}}{{name}}{{/tags}}</p>
-      </div>
-      {{/allSnips}}
-    </div>
-  </body>
-</html>
+<h1>All Da Code Snips</h1>
+<div class="all-snippet-container">
+  {{#allSnips}}
+  <div class="snippet-container">
+    <h3>{{title}}</h3>
+    <p>{{body}}</p>
+    <p>Additional Notes: {{notes}}</p>
+    <p>Language: {{language}}</p>
+    <p>Tags: {{#tags}}{{name}}{{/tags}}</p>
+  </div>
+  {{/allSnips}}
+</div>
