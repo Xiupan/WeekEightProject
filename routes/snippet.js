@@ -5,8 +5,10 @@ const Snippet = require("../models/Snippet");
 router.get('/', function(request, response){ // shows all snippets on the main page
   Snippet.find()
   .then(function(allSnips){
+    // var decodedBody = decodeURI(allSnips.body);
     response.render('index',{
-      allSnips: allSnips
+      allSnips: allSnips.body
+      // decodedBody: decodedBody
     });
   })
 })
@@ -40,13 +42,18 @@ router.get('/api/allSnippet', function(request, response){ // shows all snippets
   })
 })
 
-router.post('/api/newSnippet', function(request, response){ // creates a new snippet and saves it to the DB
+router.get('/newSnippet', function(request, response){
+  response.render('newSnippet');
+})
+
+router.post('/newSnippet', function(request, response){ // creates a new snippet and saves it to the DB
   var standardLanguage = (request.body.language).toLowerCase().trim();
   var standardName = (request.body.name).toLowerCase().trim();
+  var standardBody = encodeURI(request.body.body); // need to decodeURI
 
   const snippet = new Snippet();
   snippet.title = request.body.title;
-  snippet.body = request.body.body; // need some kind of validation so the user can input actual code without it breaking everything...
+  snippet.body = standardBody; // need some kind of validation so the user can input actual code without it breaking everything...
   snippet.notes = request.body.notes;
   snippet.language = standardLanguage;
   snippet.tags.push({name: standardName});
