@@ -2,10 +2,10 @@
 <div class="all-snippet-container">
   {{#allSnips}}
   <div class="snippet-container">
-    <h3>{{title}}</h3>
-    {{#decodedBody}}
-    <p>{{decodedBody}}</p>
-    {{/decodedBody}}
+    <a href="/snippet/{{_id}}">
+      <h3>{{title}}</h3>
+    </a>
+    <p class="body-encoded">{{body}}</p>
     <p>Additional Notes: {{notes}}</p>
     <p>Language: {{language}}</p>
     <p>Tags: {{#tags}}{{name}}{{/tags}}</p>

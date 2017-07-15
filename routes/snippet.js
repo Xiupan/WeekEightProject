@@ -16,6 +16,17 @@ router.get('/', function(request, response){ // shows all snippets on the main p
   })
 })
 
+router.get('/snippet/:id', function(request, response){
+  Snippet.findOne({
+    _id: request.params.id
+  })
+  .then(function(specificSnip){
+    response.render('index',{
+      allSnips: specificSnip
+    })
+  })
+})
+
 router.get('/language/:language', function(request, response){ // shows all snippets of the selected language only
   Snippet.find({
     language: request.params.language
