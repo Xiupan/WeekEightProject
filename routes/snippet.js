@@ -27,9 +27,9 @@ router.get('/language/:language', function(request, response){ // shows all snip
   })
 })
 
-router.get('/tag/:tag', function(request, response){ // not working yet...
-  Snippet.tags.find({
-    name: request.params.tag
+router.get('/tag/:tag', function(request, response){
+  Snippet.find({
+    'tags.name': request.params.tag
   })
   .then(function(showByTag){
     response.render('index',{
@@ -52,12 +52,14 @@ router.get('/newSnippet', function(request, response){
 router.post('/newSnippet', function(request, response){ // creates a new snippet and saves it to the DB
   var standardLanguage = (request.body.language).toLowerCase().trim();
   var standardName = (request.body.name).toLowerCase().trim();
-  var standardBody = encodeURI(request.body.body); // need to decodeURI
+  var standardBody = encodeURI(request.body.body);
+  var standardTitle = (request.body.title).trim();
+  var standardNotes = (request.body.notes).trim(); // trim just removes any spaces before and after the string's content.
 
   const snippet = new Snippet();
-  snippet.title = request.body.title;
+  snippet.title = standardTitle;
   snippet.body = standardBody; // need some kind of validation so the user can input actual code without it breaking everything...
-  snippet.notes = request.body.notes;
+  snippet.notes = standardNotes;
   snippet.language = standardLanguage;
   snippet.tags.push({name: standardName});
   snippet.save()
