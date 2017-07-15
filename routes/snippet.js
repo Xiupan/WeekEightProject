@@ -21,8 +21,8 @@ router.get('/snippet/:id', function(request, response){
     _id: request.params.id
   })
   .then(function(specificSnip){
-    response.render('index',{
-      allSnips: specificSnip
+    response.render('snippet',{
+      specificSnip: specificSnip
     })
   })
 })

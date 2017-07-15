@@ -1,0 +1,11 @@
+<h1>{{specificSnip.title}}</h1>
+<div class="all-snippet-container">
+  <div class="snippet-container">
+    <p class="body-encoded">{{specificSnip.body}}</p>
+    <p>Additional Notes: {{specificSnip.notes}}</p>
+    <p>Language: {{specificSnip.language}}</p>
+    <p>Tags: {{#tags}}{{specificSnip.name}}{{/tags}}</p>
+  </div>
+</div>
+
+<script src="/client/specificSnippet.js" charset="utf-8"></script>
