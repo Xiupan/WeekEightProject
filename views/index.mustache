@@ -3,7 +3,9 @@
   {{#allSnips}}
   <div class="snippet-container">
     <h3>{{title}}</h3>
-    <p>{{allSnips}}</p>
+    {{#decodedBody}}
+    <p>{{decodedBody}}</p>
+    {{/decodedBody}}
     <p>Additional Notes: {{notes}}</p>
     <p>Language: {{language}}</p>
     <p>Tags: {{#tags}}{{name}}{{/tags}}</p>

@@ -5,10 +5,13 @@ const Snippet = require("../models/Snippet");
 router.get('/', function(request, response){ // shows all snippets on the main page
   Snippet.find()
   .then(function(allSnips){
-    // var decodedBody = decodeURI(allSnips.body);
-    response.render('index',{
-      allSnips: allSnips.body
-      // decodedBody: decodedBody
+    var temp = [];
+    for (var i = 0; i < allSnips.length; i++) {
+      temp.push(decodeURI(allSnips[i].body)); // FIXME: this decodes the body before displaying. Still not working correctly with Mustache file. Fix later.
+    }
+    return response.render('index',{
+      allSnips: allSnips,
+      decodedBody: temp
     });
   })
 })
